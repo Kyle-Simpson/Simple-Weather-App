@@ -7,9 +7,10 @@ import { Navbar, NavItem, Nav, Grid, Row, Col } from "react-bootstrap";
 
 const PLACES = [
   { name: "Vacaville", zip: "95687" },
+  { name: "Napa", zip: "94558"},
+  { name: "Medford", zip: "97501" },
   { name: "Seattle - UDistrict", zip: "98105" },
-  { name: "Honolulu", zip: "96803" },
-  /*{ name: "Sacramento", zip: "95828" }*/
+  { name: "Honolulu", zip: "96803" }
 ];
 
 class WeatherDisplay extends Component {
@@ -57,12 +58,20 @@ class App extends Component {
   }
   render() {
     const activePlace = this.state.activePlace;
+    var d = new Date(); // for now
+    var hour = 0;
+    var min = d.getMinutes();
+    var getAmPm = "A.M.";
+    if (d.getHours() > 12) {
+      hour = d.getHours() - 12;
+      getAmPm = "P.M."
+    }
     return (
       <div>
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              React Simple Weather App
+              React Simple Weather App - Current Time {hour}:{min} {getAmPm}
             </Navbar.Brand>
           </Navbar.Header>
         </Navbar>
