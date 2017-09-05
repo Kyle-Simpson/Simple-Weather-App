@@ -20,6 +20,9 @@ class WeatherDisplay extends Component {
       weatherData: null
     };
   }
+
+  
+
   componentDidMount() {
     const zip = this.props.zip;
     const URL = "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -30,6 +33,7 @@ class WeatherDisplay extends Component {
     });
   }
   render() {
+
     const weatherData = this.state.weatherData;
     if (!weatherData) return <div>Loading</div>;
     const weather = weatherData.weather[0];
@@ -66,6 +70,7 @@ class App extends Component {
       hour = d.getHours() - 12;
       getAmPm = "P.M."
     }
+
     return (
       <div>
         <Navbar>
@@ -90,6 +95,11 @@ class App extends Component {
                 {PLACES.map((place, index) => (
                   <NavItem key={index} eventKey={index}>{place.name}</NavItem>
                 ))}
+              </Nav>
+              <Nav>
+                <h5>or</h5>
+                <h3>Enter a zip code</h3>
+                <input type="text" value="  --under construction--  "/>
               </Nav>
             </Col>
             <Col md={8} sm={8}>
